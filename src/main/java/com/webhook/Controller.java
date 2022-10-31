@@ -19,7 +19,7 @@ public class Controller {
 
   @PostMapping("/delivery-report")
   public void postReport(HttpServletRequest request) throws IOException {
-    LOGGER.debug("Endpoint is hit");
-    request.getReader().lines().forEach(s -> LOGGER.debug("Reader value : {}", s));
+    String requestBody = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+    LOGGER.info("Request body : {}",requestBody);
   }
 }
